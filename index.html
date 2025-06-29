@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <main class="landing-page">
+        <section class="form-section">
+            <h1>Welcome to TaskFlow</h1>
+            <h4><i>Your Personal Productivity Companion</i></h4>
+            <h4>Age verification required for access</h4>
+            <form id="registration-form" novalidate>
+                <h2>Verify Your Identity</h2>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required />
+                </div>
+                <button id="submit-btn" type="submit">Verify & Continue</button>
+                <p id="error-message" class="error-text"></p>
+                <p>By confirming, you agree that you are over 10 years old and agree to our terms of service.</p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Localization placeholder -->
+    <div id="locale-placeholder" data-locale="guj" hidden></div>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
