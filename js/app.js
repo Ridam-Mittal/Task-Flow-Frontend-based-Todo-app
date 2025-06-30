@@ -59,8 +59,10 @@ taskinputform.addEventListener('submit', (e) => {
 
     addTaskBtn.disabled = true;
     addTaskBtn.innerText = "Adding...";
-    addTodos(taskinput, activeTab);
+    const todoadded = addTodos(taskinput, activeTab);
     taskinputform.reset();
+
+    if(!todoadded) return;
     showMessage("Todo added successfully!", false);
     displayTodos();
 

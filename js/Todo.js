@@ -76,7 +76,7 @@ export const addTodos = (input, stage) => {
     const exist = todos.some(todo => todo.text.trim().toLowerCase() === input.trim().toLowerCase());
     if (exist) {
         showMessage(`Task already exists in ${stage} section.`, true, 2000);
-        return;
+        return false;
     }
     const newtask = {
         id: crypto.randomUUID(), // universally unique id
@@ -87,7 +87,8 @@ export const addTodos = (input, stage) => {
     }
 
     todos.unshift(newtask);
-    localStorage.setItem("todos", JSON.stringify(todos));    
+    localStorage.setItem("todos", JSON.stringify(todos));  
+    return true;  
 }
 
 
