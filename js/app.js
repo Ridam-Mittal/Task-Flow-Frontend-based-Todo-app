@@ -57,19 +57,11 @@ taskinputform.addEventListener('submit', (e) => {
         return;
     }
 
-    addTaskBtn.disabled = true;
-    addTaskBtn.innerText = "Adding...";
-    const todoadded = addTodos(taskinput, activeTab);
+   
+    addTodos(taskinput, activeTab, addTaskBtn);
     taskinputform.reset();
 
-    if(!todoadded) return;
-    showMessage("Todo added successfully!", false);
-    displayTodos();
-
-    setTimeout(() => {
-        addTaskBtn.disabled = false;
-        addTaskBtn.innerText = "Add Task";
-    }, 1300); 
+    displayTodos(); 
 });
 
 

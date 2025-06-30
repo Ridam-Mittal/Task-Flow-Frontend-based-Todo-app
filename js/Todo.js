@@ -70,26 +70,39 @@ export const displayTodos = () => {
 
 
 
-export const addTodos = (input, stage) => {
+export const addTodos = (input, stage, addTaskBtn) => {
     const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    const exist = todos.some(todo => todo.text.trim().toLowerCase() === input.trim().toLowerCase());
-    if (exist) {
-        showMessage(`Task already exists in ${stage} section.`, true, 2000);
-        return false;
+    const trimmedInput = input.trim().toLowerCase();
+    const existingTodo = todos.find(todo => todo.text.trim().toLowerCase() === trimmedInput);
+
+    if (existingTodo) {
+        let existingStage = "todo";
+        if (existingTodo.archived) existingStage = "archived";
+        else if (existingTodo.completed) existingStage = "completed";
+
+        showMessage(`Task already exists in the ${existingStage} section.`, true, 2000);
+        return;
     }
-    const newtask = {
-        id: crypto.randomUUID(), // universally unique id
-        text: input,
+
+    addTaskBtn.disabled = true;
+    addTaskBtn.innerText = "Adding...";
+
+    const newTask = {
+        id: crypto.randomUUID(),
+        text: input.trim(),
         completed: stage === "completed",
         archived: stage === "archived",
         lastModified: Date.now()
-    }
+    };
 
-    todos.unshift(newtask);
-    localStorage.setItem("todos", JSON.stringify(todos));  
-    return true;  
-}
+    todos.unshift(newTask);
+    localStorage.setItem("todos", JSON.stringify(todos));
 
+    showMessage("Todo added successfully!", false);
 
-
+    setTimeout(() => {
+        addTaskBtn.disabled = false;
+        addTaskBtn.innerText = "Add Task";
+    }, 1300);
+};

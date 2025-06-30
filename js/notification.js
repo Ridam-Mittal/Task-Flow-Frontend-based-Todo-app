@@ -1,4 +1,4 @@
-export const showMessage = (text, error = false, color='#0D8ABC', duration = 1500, ) => {
+export const showMessage = (text, error = false, color='#0D8ABC', duration = 2000) => {
     Toastify({
         text,
         duration,
