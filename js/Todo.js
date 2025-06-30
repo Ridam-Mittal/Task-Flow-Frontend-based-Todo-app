@@ -1,5 +1,6 @@
 import { formatTimestamp } from "./utlity.js";
 import { emptyMessage } from "./utlity.js";
+import { showMessage } from './notification.js';
 
 export const displayTodos = () => {
     const todos = JSON.parse(localStorage.getItem("todos")) || [];
@@ -70,6 +71,13 @@ export const displayTodos = () => {
 
 
 export const addTodos = (input, stage) => {
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+    const exist = todos.some(todo => todo.text.trim().toLowerCase() === input.trim().toLowerCase());
+    if (exist) {
+        showMessage(`Task already exists in ${stage} section.`, true, 2000);
+        return;
+    }
     const newtask = {
         id: crypto.randomUUID(), // universally unique id
         text: input,
@@ -78,9 +86,7 @@ export const addTodos = (input, stage) => {
         lastModified: Date.now()
     }
 
-    const todos = JSON.parse(localStorage.getItem("todos")) || [];
     todos.unshift(newtask);
-    
     localStorage.setItem("todos", JSON.stringify(todos));    
 }
 
