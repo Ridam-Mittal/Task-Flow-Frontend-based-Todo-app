@@ -57,7 +57,7 @@ form.addEventListener("submit", function (e) {
     nameInput.disabled = true;
     dobInput.disabled = true;
 
-    showMessage("User Registered.  Redirecting to TaskFlow...", false);
+    showMessage("User Registered.  Redirecting to TaskFlow...", false, '#289c28', 2000);
 
     setTimeout(() => {
         window.location.href = "app.html";
@@ -72,7 +72,7 @@ function checkForExistingUser() {
     submitBtn.disabled = true;
     nameInput.disabled = true;
     dobInput.disabled = true;
-    showMessage("Redirecting to TaskFlow...", false, 2000);
+    showMessage("Redirecting to TaskFlow...", false, '#289c28', 2000);
     setTimeout(() => {
       window.location.href = "app.html";
     }, 2000);
@@ -80,4 +80,4 @@ function checkForExistingUser() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", checkForExistingUser);
+checkForExistingUser();

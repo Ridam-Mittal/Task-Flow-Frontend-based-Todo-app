@@ -1,11 +1,11 @@
-export const showMessage = (text, error = false, duration = 1500) => {
+export const showMessage = (text, error = false, color='#0D8ABC', duration = 1500, ) => {
     Toastify({
         text,
         duration,
         gravity: "bottom",       // ⬅️ From bottom
         position: "right",       // ⬅️ Right corner
         style: {
-            background: error ? '#ff4d4f' : '#0D8ABC',
+            background: error ? '#ff4d4f' : color,
             color: "#ffffff",
             fontSize: "15px",
             borderRadius: "6px",
